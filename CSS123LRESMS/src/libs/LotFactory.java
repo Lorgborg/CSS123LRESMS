@@ -18,18 +18,17 @@ public class LotFactory {
         this.amountOfLots = amountOfLots;
     }
     
-    public ArrayList<Lots> CreateLots(){
+    public void CreateLots(){
         char block = 'A';
-        ArrayList<Lots> lotArray = new ArrayList<Lots>();
         for(int i = 0; i < amountOfBlocks; i++){            
             
             for(int j = 0; j < amountOfLots; j++){
-                lotArray.add(new Lots(10, 10, j+1, block, "Unoccupied"));
+                int sizeDeviance = (int)(Math.random() * 10) + 1;
+                int priceDeviance = (int)(Math.random() * 10000) + 1;
+                Database.getLots().add(new Lots(100 + sizeDeviance, 1000 + priceDeviance, j+1, block, "Unoccupied"));
             }
             
             ++block;
         }
-        
-        return lotArray;
     }
 }

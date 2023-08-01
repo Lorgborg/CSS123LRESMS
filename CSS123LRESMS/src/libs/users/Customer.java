@@ -31,7 +31,8 @@ public class Customer extends User{
     }
     
     // dependent on Lot
-    public void searchLot(){
+    @Override
+    public void searchLots(){
         
     }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Database {
     public static ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
+    private static ArrayList<Lots> listOfLots = new ArrayList<Lots>();
     
     public boolean addCustomer(Customer customer){
         try {
@@ -23,5 +24,9 @@ public class Database {
         }
         System.out.println("Customer " + customer.getName() + " added to db!");
         return true;
+    }
+    
+    public static ArrayList<Lots> getLots(){
+        return listOfLots;
     }
 }

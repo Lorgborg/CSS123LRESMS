@@ -22,4 +22,7 @@ public abstract class User {
     }
     
     public abstract void update();
+    public void searchLots(){
+        
+    }
 }

@@ -13,13 +13,20 @@ import src.LogIn;
  *
  * @author Riniel
  */
-public class Transaction implements Mediator {
+public class Transaction{
     private User user;
     private boolean userValidated;
     
-    
-    public Transaction(String username, char[] password, boolean isRealtor){
+    private Transaction(){
         
+    }
+    
+    public static Transaction getTransaction(){
+        Transaction transactionInstance = new Transaction();
+        return transactionInstance;
+    }
+    
+    public void validateTransactionSession(String username, char[] password, boolean isRealtor){
         if(isRealtor){
             if(username.equals(Realtor.getUsername()) && Arrays.equals(Realtor.getPass(), password)) {
                 this.user = new Realtor();
@@ -28,15 +35,15 @@ public class Transaction implements Mediator {
             }
         }
         
-        Database.listOfCustomers.forEach((customerDB)-> {
+        Database.listOfCustomers.forEach((customerDB) -> { 
             
             // ------- initiating database checks --------
-            // database is not empty
-            
             if(Database.listOfCustomers.size() == 0) {
                 System.out.println("Size is 0");
                 return;
-            }
+            }            // database is not empty
+            
+
             // username transaction is found within customer database
             if(!customerDB.getName().equals(username)){
                 System.out.println("username not found");
@@ -51,7 +58,7 @@ public class Transaction implements Mediator {
             // checks are validated, user in session is used
             this.userValidated = true;
             this.user = customerDB;
-            JOptionPane.showMessageDialog(new LogIn(false), "welcome" + this.user.getName());
+            JOptionPane.showMessageDialog(new LogIn(false), "welcome " + this.user.getName());
             return;
         });
        
@@ -63,13 +70,13 @@ public class Transaction implements Mediator {
         }
     }
     
-    @Override
-    public void logOn(Customer user){
-        
+    public void searchLots(){
+        this.user.searchLots();
     }
     
-    public void purchase(){
-        
+    public User getUser(){
+        return this.user;
     }
+    
     
 }

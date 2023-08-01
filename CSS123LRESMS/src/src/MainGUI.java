@@ -5,6 +5,7 @@
 package src;
 import libs.users.Customer;
 import libs.Transaction;
+import libs.LotFactory;
 
 /**
  *
@@ -95,6 +96,7 @@ public class MainGUI extends javax.swing.JFrame {
     private void realtorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realtorButtonActionPerformed
         LogIn login = new LogIn(true);
         login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_realtorButtonActionPerformed
 
     /**
@@ -124,6 +126,9 @@ public class MainGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        LotFactory factory = new LotFactory(10, 10);
+        factory.CreateLots();
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
