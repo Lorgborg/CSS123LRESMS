@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Database {
     public static ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
-    private static ArrayList<Lots> listOfLots = new ArrayList<Lots>();
+    private static ArrayList<Lot> listOfLots = new ArrayList<Lot>();
     
     public boolean addCustomer(Customer customer){
         try {
@@ -26,7 +26,7 @@ public class Database {
         return true;
     }
     
-    public static ArrayList<Lots> getLots(){
+    public static ArrayList<Lot> getLots(){
         return listOfLots;
     }
 }

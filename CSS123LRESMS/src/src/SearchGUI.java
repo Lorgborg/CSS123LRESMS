@@ -7,14 +7,14 @@ package src;
 import java.util.ArrayList;
 import libs.Database;
 import libs.LotFactory;
-import libs.Lots;
+import libs.Lot;
 import libs.search.*;
 /**
  *
  * @author Riniel
  */
 public class SearchGUI extends javax.swing.JFrame {
-    public static ArrayList<Lots> searchResults = new ArrayList<Lots>();
+    public static ArrayList<Lot> searchResults = new ArrayList<Lot>();
     /**
      * Creates new form GUI
      */
@@ -179,7 +179,7 @@ public class SearchGUI extends javax.swing.JFrame {
         
         
         
-        ArrayList<Lots> unsorted = searcher.filterData(
+        ArrayList<Lot> unsorted = searcher.filterData(
                 Database.getLots(), 
                 block,
                 priceMin.getText().toString(),
@@ -196,7 +196,7 @@ public class SearchGUI extends javax.swing.JFrame {
             unsorted = new PricePriority(searcher).sort(unsorted);
         }
         this.searchResults = unsorted;
-        for(Lots lot : this.searchResults) {
+        for(Lot lot : this.searchResults) {
             System.out.println("block: " + lot.getBlock() + " lot: " + lot.getLot() + " price: " + lot.getPrice() + " size: " + lot.getSize());
         }
         

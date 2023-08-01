@@ -5,19 +5,19 @@
 package libs;
 
 import java.util.Comparator;
-import libs.users.Customer;
+import libs.users.User;
 
 /**
  *
  * @author Riniel
  */
-public class Lots {
+public class Lot {
     private int size, price, lot;
     private String status;
     private char block;
-    private Customer owner;
+    private User owner;
     
-    public Lots(int size, int price, int lot, char block, String status){
+    public Lot(int size, int price, int lot, char block, String status){
         this.size = size;
         this.price = price;
         this.status = status;
@@ -45,20 +45,24 @@ public class Lots {
         return lot;
     }
     
-    public void Owner(Customer ownerInput){
+    public void setOwner(User ownerInput){
         this.owner = ownerInput;
     }
     
-    public static Comparator<Lots> orderLotSize = new Comparator<Lots>() {
-        public int compare(Lots s1, Lots s2) {
+    public void setStatus(String newStatus) {
+        this.status = newStatus;
+    }
+    
+    public static Comparator<Lot> orderLotSize = new Comparator<Lot>() {
+        public int compare(Lot s1, Lot s2) {
             int size1 = s1.getSize();
             int size2 = s2.getSize();
             return size1 - size2;
         }
     };
     
-    public static Comparator<Lots> orderLotPrice = new Comparator<Lots>() {
-        public int compare(Lots s1, Lots s2) {
+    public static Comparator<Lot> orderLotPrice = new Comparator<Lot>() {
+        public int compare(Lot s1, Lot s2) {
             int size1 = s1.getPrice();
             int size2 = s2.getPrice();
             return size1 - size2;

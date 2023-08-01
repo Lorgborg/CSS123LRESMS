@@ -9,6 +9,8 @@ package paymentMethods;
  * @author Riniel
  */
 public interface Payment {
-    void processPayment(double price, double number);
+    String processPayment(double price);
+    void getPaymentDetails();
+    void setPaymentDetails();
 }
 

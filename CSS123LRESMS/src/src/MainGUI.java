@@ -91,6 +91,7 @@ public class MainGUI extends javax.swing.JFrame {
     private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
         LogIn login = new LogIn(false);
         login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_customerButtonActionPerformed
 
     private void realtorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realtorButtonActionPerformed

@@ -104,8 +104,7 @@ public class LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "username and password must be filled");
             return;
         }
-        Transaction transact = Transaction.getTransaction();
-        transact.validateTransactionSession(username.getText(), password.getPassword(), this.realtorMode);
+        Transaction.getTransaction().validateTransactionSession(username.getText(), password.getPassword(), this.realtorMode);
         this.dispose();
         new SearchGUI().setVisible(true);
     }//GEN-LAST:event_logInEnterActionPerformed

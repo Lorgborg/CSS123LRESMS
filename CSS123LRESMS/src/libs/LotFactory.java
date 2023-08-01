@@ -25,7 +25,7 @@ public class LotFactory {
             for(int j = 0; j < amountOfLots; j++){
                 int sizeDeviance = (int)(Math.random() * 10) + 1;
                 int priceDeviance = (int)(Math.random() * 10000) + 1;
-                Database.getLots().add(new Lots(100 + sizeDeviance, 1000 + priceDeviance, j+1, block, "Unoccupied"));
+                Database.getLots().add(new Lot(100 + sizeDeviance, 1000 + priceDeviance, j+1, block, "Unoccupied"));
             }
             
             ++block;

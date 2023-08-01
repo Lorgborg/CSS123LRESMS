@@ -7,20 +7,20 @@ package src;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import libs.Lots;
+import libs.Lot;
 
 /**
  *
  * @author Riniel
  */
 public class SearchResults extends javax.swing.JFrame {
-
+    public static Lot result;
     /**
      * Creates new form SearchResults
      */
     public SearchResults() {
         initComponents();
-        for(Lots lot : SearchGUI.searchResults){
+        for(Lot lot : SearchGUI.searchResults){
             DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
             model.addRow(new Object[]{lot.getBlock(), lot.getLot(), lot.getPrice(), lot.getSize()});
         }
@@ -120,8 +120,9 @@ public class SearchResults extends javax.swing.JFrame {
         String lot = resultsTable.getValueAt(resultsTable.getSelectedRow(), 1).toString();
         int confirm = JOptionPane.showConfirmDialog(this, "Purchasing: Block " + block + " Lot " + lot);
         if(confirm == 0) {
+            this.result = SearchGUI.searchResults.get(resultsTable.getSelectedRow());
             this.dispose();
-            new PaymentGUI().setVisible(true);
+            new ChoosePaymentGUI().setVisible(true);
         }
     }//GEN-LAST:event_buyButtonActionPerformed
 

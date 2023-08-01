@@ -6,7 +6,7 @@ package libs.search;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import libs.Lots;
+import libs.Lot;
 
 /**
  *
@@ -19,12 +19,12 @@ public class PricePriority implements Search {
        this.filter = filter;
     }
     
-    public ArrayList<Lots> filterData(ArrayList<Lots> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot){
+    public ArrayList<Lot> filterData(ArrayList<Lot> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot){
         return sort(filter.filterData(unsorted, block, minPrice, maxPrice, minSize, maxSize, lot));
     }
     
-    public ArrayList<Lots> sort(ArrayList<Lots> unsorted){
-        Collections.sort(unsorted, Lots.orderLotPrice);
+    public ArrayList<Lot> sort(ArrayList<Lot> unsorted){
+        Collections.sort(unsorted, Lot.orderLotPrice);
         return unsorted;
     }
 }

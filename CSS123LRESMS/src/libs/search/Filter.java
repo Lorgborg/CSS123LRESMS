@@ -6,7 +6,7 @@ package libs.search;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import libs.Lots;
+import libs.Lot;
 import src.SearchGUI;
 
 /**
@@ -14,7 +14,7 @@ import src.SearchGUI;
  * @author Riniel
  */
 public class Filter implements Search {
-    public ArrayList<Lots> filterData(ArrayList<Lots> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot){
+    public ArrayList<Lot> filterData(ArrayList<Lot> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot){
         String[] stringConstraints = {minPrice, maxPrice, minSize, maxSize};
         if(block != ' ') {
             unsorted.removeIf(filter -> filter.getBlock() != block);
@@ -67,7 +67,7 @@ public class Filter implements Search {
             unsorted.removeIf(filter -> filter.getPrice() > intConstraints[1]);
         }
         
-        unsorted.removeIf(filter -> filter.getStatus().equals("Occupied"));
+        unsorted.removeIf(filter -> !filter.getStatus().equals("Unoccupied"));
         
         return unsorted;
     }

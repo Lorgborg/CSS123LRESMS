@@ -5,11 +5,11 @@
 package libs.search;
 
 import java.util.ArrayList;
-import libs.Lots;
+import libs.Lot;
 /**
  *
  * @author Riniel
  */
 public interface Search{
-    public ArrayList<Lots> filterData(ArrayList<Lots> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot);
+    public ArrayList<Lot> filterData(ArrayList<Lot> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot);
 }

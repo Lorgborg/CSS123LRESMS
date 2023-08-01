@@ -29,10 +29,4 @@ public class Customer extends User{
     public char[] getPassword() {
         return password;
     }
-    
-    // dependent on Lot
-    @Override
-    public void searchLots(){
-        
-    }
 }

@@ -16,15 +16,19 @@ import src.LogIn;
 public class Transaction{
     private User user;
     private boolean userValidated;
+    private static Transaction transactionInstance;
     
     private Transaction(){
         
     }
     
     public static Transaction getTransaction(){
-        Transaction transactionInstance = new Transaction();
+        if(transactionInstance == null){
+            transactionInstance = new Transaction();
+        }
         return transactionInstance;
     }
+    
     
     public void validateTransactionSession(String username, char[] password, boolean isRealtor){
         if(isRealtor){
@@ -77,6 +81,5 @@ public class Transaction{
     public User getUser(){
         return this.user;
     }
-    
     
 }
