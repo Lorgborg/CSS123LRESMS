@@ -33,7 +33,6 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         customerButton = new javax.swing.JButton();
         realtorButton = new javax.swing.JButton();
-        lotButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,13 +52,6 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        lotButton.setText("View all lots");
-        lotButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lotButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,8 +65,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addGap(186, 186, 186)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(realtorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(customerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lotButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(customerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,9 +77,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(customerButton)
                 .addGap(18, 18, 18)
                 .addComponent(realtorButton)
-                .addGap(18, 18, 18)
-                .addComponent(lotButton)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,13 +94,6 @@ public class MainGUI extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_realtorButtonActionPerformed
-
-    private void lotButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotButtonActionPerformed
-        Database.getLots().forEach(lot -> {
-            lot.getBlock();
-            lot.getPrice();
-        });
-    }//GEN-LAST:event_lotButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +136,6 @@ public class MainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton customerButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton lotButton;
     private javax.swing.JButton realtorButton;
     // End of variables declaration//GEN-END:variables
 }

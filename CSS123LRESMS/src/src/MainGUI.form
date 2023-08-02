@@ -34,7 +34,6 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="realtorButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="customerButton" max="32767" attributes="0"/>
-                          <Component id="lotButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -51,9 +50,7 @@
               <Component id="customerButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="realtorButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lotButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="137" max="32767" attributes="0"/>
+              <EmptySpace pref="132" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,14 +75,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="realtorButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="lotButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View all lots"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lotButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
