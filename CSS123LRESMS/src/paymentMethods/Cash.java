@@ -48,6 +48,7 @@ public class Cash implements Payment{
         gui.getInputLabel2().setText("email");
         gui.getInputLabel3().setText("Current Adress");
         gui.getPasswordLabel().setVisible(false);
+        gui.getPasswordField().setVisible(false);
         SearchResults.result.setStatus("Reserved");
         SearchResults.result.setOwner(Transaction.getTransaction().getUser());
     }
