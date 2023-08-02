@@ -106,7 +106,9 @@ public class LogIn extends javax.swing.JFrame {
         }
         Transaction.getTransaction().validateTransactionSession(username.getText(), password.getPassword(), this.realtorMode);
         this.dispose();
-        new SearchGUI().setVisible(true);
+        if (!this.realtorMode){
+            new SearchGUI().setVisible(true);
+        }
     }//GEN-LAST:event_logInEnterActionPerformed
 
     /**

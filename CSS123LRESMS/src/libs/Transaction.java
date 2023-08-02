@@ -8,6 +8,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 import libs.users.*;
 import src.LogIn;
+import src.RealtorDashboard;
 
 /**
  *
@@ -35,6 +36,7 @@ public class Transaction{
             if(username.equals(Realtor.getUsername()) && Arrays.equals(Realtor.getPass(), password)) {
                 this.user = new Realtor();
                 JOptionPane.showMessageDialog(new LogIn(true), "Welcome Realtor " + this.user.getName());
+                new RealtorDashboard().setVisible(true);
                 return;
             }
         }

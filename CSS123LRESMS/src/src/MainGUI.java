@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package src;
+import libs.Database;
 import libs.users.Customer;
 import libs.Transaction;
 import libs.LotFactory;
@@ -53,6 +54,11 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         lotButton.setText("View all lots");
+        lotButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lotButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +105,13 @@ public class MainGUI extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_realtorButtonActionPerformed
+
+    private void lotButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotButtonActionPerformed
+        Database.getLots().forEach(lot -> {
+            lot.getBlock();
+            lot.getPrice();
+        });
+    }//GEN-LAST:event_lotButtonActionPerformed
 
     /**
      * @param args the command line arguments

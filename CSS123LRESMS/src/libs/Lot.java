@@ -67,5 +67,5 @@ public class Lot {
             int size2 = s2.getPrice();
             return size1 - size2;
         }
-    };
+    };    
 }

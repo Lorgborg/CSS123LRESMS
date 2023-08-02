@@ -200,7 +200,6 @@ public class SearchGUI extends javax.swing.JFrame {
             System.out.println("block: " + lot.getBlock() + " lot: " + lot.getLot() + " price: " + lot.getPrice() + " size: " + lot.getSize());
         }
         
-        this.dispose();
         new SearchResults().setVisible(true);
     }//GEN-LAST:event_searchButtonActionPerformed
 
