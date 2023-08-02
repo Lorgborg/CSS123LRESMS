@@ -44,9 +44,18 @@ public class BankTransfer implements Payment{
     
     @Override
     public String processPayment(double amount) {
-        System.out.println("Processing Payment with details: " + this.creditCardNum);
-        SearchResults.result.setStatus("Owned");
-        SearchResults.result.setOwner(Transaction.getTransaction().getUser());
-        return "";
+        int confirmation = JOptionPane.showConfirmDialog(gui, "Pay Php " + SearchResults.result.getPrice() + " Using the Credit Card Account " + this.creditCardNum);
+        Receipt receipt = new Receipt();
+        if(confirmation == 0) {
+            SearchResults.result.setStatus("Owned");
+            SearchResults.result.setOwner(Transaction.getTransaction().getUser());
+        }
+        
+        receipt.setPaymentMethod("Bank Transfer");
+        receipt.addReceiptDetails("Credit Card Number", this.creditCardNum);
+        receipt.addReceiptDetails("Block", String.valueOf(SearchResults.result.getBlock()));
+        receipt.addReceiptDetails("Lot", ((Integer)SearchResults.result.getLot()).toString());
+        receipt.addReceiptDetails("Username", Transaction.getTransaction().getUser().getName());
+        return receipt.generateReceipt();
     }
 }

@@ -25,12 +25,12 @@ public class Receipt {
     
     public String generateReceipt(){
         Date date = new Date();
-        String receipt = "Better Call Sales" + paymentMethod;
+        String receipt = "Better Call Sales " + paymentMethod + "\n";
         for(String item : this.receiptDetails.keySet()) {
             receipt += "\n";
             receipt += item + ": " + this.receiptDetails.get(item);
         }
-        receipt += "\n Generated " + date.toString();
+        receipt += "\n\nGenerated " + date.toString();
         return receipt;
     }
 }

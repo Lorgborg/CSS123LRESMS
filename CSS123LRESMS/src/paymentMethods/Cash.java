@@ -5,6 +5,7 @@
 package paymentMethods;
 
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 import libs.Transaction;
 import src.SearchResults;
 
@@ -14,17 +15,33 @@ import src.SearchResults;
  */
 public class Cash implements Payment{
     private PayGUI gui = new PayGUI();
+    String name, phoneNum, email, address;
     
     @Override
     public String processPayment(double amount) {
-        return "";
+        int confirmation = JOptionPane.showConfirmDialog(gui, "Pay Php " + SearchResults.result.getPrice() + " to office to complete the purchase. The lot is currently reserved.");
+        Receipt receipt = new Receipt();
+        if(confirmation == 0) {
+            SearchResults.result.setStatus("Reserved");
+        }
+        
+        receipt.setPaymentMethod("Gcash");
+        receipt.addReceiptDetails("Name", this.name);
+        receipt.addReceiptDetails("Phone number", this.phoneNum);
+        receipt.addReceiptDetails("Block", String.valueOf(SearchResults.result.getBlock()));
+        receipt.addReceiptDetails("Lot", ((Integer)SearchResults.result.getLot()).toString());
+        receipt.addReceiptDetails("Username", Transaction.getTransaction().getUser().getName());
+        return receipt.generateReceipt();
     }
     
     public void getPaymentDetails(){
-        
+        this.phoneNum = gui.getInputField1().getText();
+        this.email = gui.getInputField2().getText();
+        this.address = gui.getInputField3().getText();
     }
     
     public void setPaymentDetails() {
+        gui.setVisible(true);
         gui.getPaymentTitle().setText("Cash");
         gui.getInputLabel1().setText("Phone number");
         gui.getInputLabel1().setPreferredSize(new Dimension(158, 29));
