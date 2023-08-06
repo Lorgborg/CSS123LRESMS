@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package libs.users;
+import java.util.ArrayList;
 import libs.Database;
+import libs.Lot;
 
 /**
  *
@@ -25,4 +27,11 @@ public abstract class User {
     public void searchLots(){
         
     }
+    public void updateOwnedLots(Lot lot){
+        
+    }
+    public ArrayList<Lot> getOwnedLots(){
+        return null;
+    }
+    
 }

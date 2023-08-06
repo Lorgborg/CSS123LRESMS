@@ -1,5 +1,7 @@
 package libs.users;
+import java.util.ArrayList;
 import libs.Database;
+import libs.Lot;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -12,6 +14,7 @@ import libs.Database;
 public class Customer extends User{
     private String name;
     private char[] password;
+    private ArrayList<Lot> ownedLots = new ArrayList<Lot>();
     
     public Customer(String name, char[] password){
         this.name = name;
@@ -19,7 +22,7 @@ public class Customer extends User{
     }
     
     public void update(){
-        new Database().addCustomer(this);
+        Database.addCustomer(this);
     }
     
     public String getName() {
@@ -28,5 +31,14 @@ public class Customer extends User{
 
     public char[] getPassword() {
         return password;
+    }
+    
+    public ArrayList<Lot> getOwnedLots() {
+        return ownedLots;
+    }
+    
+    public void updateOwnedLots(Lot lot) {
+        this.ownedLots.add(lot);
+        System.out.println("added: " + lot);
     }
 }

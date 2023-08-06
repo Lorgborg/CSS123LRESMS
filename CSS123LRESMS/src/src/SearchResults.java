@@ -4,6 +4,7 @@
  */
 package src;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -15,12 +16,16 @@ import libs.Lot;
  */
 public class SearchResults extends javax.swing.JFrame {
     public static Lot result;
+    private SearchGUI searchGUI;
+    private ArrayList<Lot> searchResults;
     /**
      * Creates new form SearchResults
      */
-    public SearchResults() {
+    public SearchResults(SearchGUI search, ArrayList<Lot> searchResults) {
         initComponents();
-        for(Lot lot : SearchGUI.searchResults){
+        this.searchGUI = search;
+        this.searchResults = searchResults;
+        for(Lot lot : searchResults){
             DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
             model.addRow(new Object[]{lot.getBlock(), lot.getLot(), lot.getPrice(), lot.getSize()});
         }
@@ -120,7 +125,8 @@ public class SearchResults extends javax.swing.JFrame {
         String lot = resultsTable.getValueAt(resultsTable.getSelectedRow(), 1).toString();
         int confirm = JOptionPane.showConfirmDialog(this, "Purchasing: Block " + block + " Lot " + lot);
         if(confirm == 0) {
-            this.result = SearchGUI.searchResults.get(resultsTable.getSelectedRow());
+            this.result = searchResults.get(resultsTable.getSelectedRow());
+            searchGUI.dispose();
             this.dispose();
             new ChoosePaymentGUI().setVisible(true);
         }
@@ -156,7 +162,7 @@ public class SearchResults extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SearchResults().setVisible(true);
+                new SearchResults(null, null).setVisible(true);
             }
         });
     }

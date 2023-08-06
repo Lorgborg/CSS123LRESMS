@@ -151,6 +151,7 @@ public class PayGUI extends javax.swing.JFrame {
         ChoosePaymentGUI.method.getPaymentDetails();
         String receipt = ChoosePaymentGUI.method.processPayment(SearchResults.result.getPrice());
         ReceiptGUI receiptGUI = new ReceiptGUI(receipt);
+        this.dispose();
         receiptGUI.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -6,8 +6,6 @@ package src;
 import libs.Database;
 import libs.users.Customer;
 import libs.Transaction;
-import libs.LotFactory;
-
 /**
  *
  * @author Riniel
@@ -122,9 +120,6 @@ public class MainGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        LotFactory factory = new LotFactory(10, 10);
-        factory.CreateLots();
-    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -23,10 +23,11 @@ public class Filter implements Search {
         if(!lot.isEmpty()) {
             int lotInt = Integer.parseInt(lot);
             unsorted.removeIf(filter -> filter.getLot() != lotInt);
+            unsorted.removeIf(filter -> filter.getStatus().equals("Occupied"));
             return unsorted;
         }
         
-        int[] intConstraints = new int[5];;
+        int[] intConstraints = new int[4];
         int i = 0;
         boolean hasMaxPrice = true;
         boolean hasMaxSize = true;
@@ -54,8 +55,8 @@ public class Filter implements Search {
             System.out.println(c);
         }
         
-        unsorted.removeIf(filter -> filter.getSize() < intConstraints[0]);
-        unsorted.removeIf(filter -> filter.getPrice() < intConstraints[2]);
+        unsorted.removeIf(filter -> filter.getPrice() < intConstraints[0]);
+        unsorted.removeIf(filter -> filter.getSize() < intConstraints[2]);
         
         if (hasMaxSize){
             unsorted.removeIf(filter -> filter.getSize() > intConstraints[3]);

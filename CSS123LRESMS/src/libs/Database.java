@@ -13,9 +13,35 @@ import java.util.ArrayList;
  */
 public class Database {
     public static ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
-    private static ArrayList<Lot> listOfLots = new ArrayList<Lot>();
+    private final ArrayList<Lot> listOfLots = createLots(new ArrayList<Lot>());
+    private static Database databaseInstance;
     
-    public boolean addCustomer(Customer customer){
+    private Database() {
+        
+    }
+    
+    public static Database getDatabase() {
+        if(databaseInstance == null) {
+            databaseInstance = new Database();
+        }
+        return databaseInstance;
+    }
+    
+    public ArrayList<Lot> createLots(ArrayList<Lot> a) {
+        char block = 'A';
+        for(int i = 0; i < 10; i++){            
+            
+            for(int j = 0; j < 10; j++){
+                int sizeDeviance = (int)(Math.random() * 10) + 1;
+                int priceDeviance = (int)(Math.random() * 10000) + 1;
+                a.add(new Lot(100 + sizeDeviance, 1000 + priceDeviance, j+1, block, "Unoccupied"));
+            }
+            ++block;
+        }
+        return a;
+    }
+    
+    public static boolean addCustomer(Customer customer){
         try {
             listOfCustomers.add(customer);
         } catch(Exception e) {
@@ -25,8 +51,11 @@ public class Database {
         System.out.println("Customer " + customer.getName() + " added to db!");
         return true;
     }
-    
-    public static ArrayList<Lot> getLots(){
+
+    public ArrayList<Lot> getListOfLots() {
         return listOfLots;
     }
+    
+    
+    
 }

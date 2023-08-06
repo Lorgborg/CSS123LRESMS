@@ -128,16 +128,19 @@ public class ChoosePaymentGUI extends javax.swing.JFrame {
         method = new Gcash();
         System.out.println("lot: " + SearchResults.result.getLot());
         method.setPaymentDetails();
+        this.dispose();
     }//GEN-LAST:event_GCashbuttonActionPerformed
 
     private void CashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CashButtonActionPerformed
         method = new Cash();
         method.setPaymentDetails();
+        this.dispose();
     }//GEN-LAST:event_CashButtonActionPerformed
 
     private void BankTransferButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BankTransferButtonActionPerformed
         method = new BankTransfer();
         method.setPaymentDetails();
+        this.dispose();
     }//GEN-LAST:event_BankTransferButtonActionPerformed
 
     /**

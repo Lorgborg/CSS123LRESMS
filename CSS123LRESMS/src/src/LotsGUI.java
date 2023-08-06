@@ -19,7 +19,7 @@ public class LotsGUI extends javax.swing.JFrame {
      */
     public LotsGUI() {
         initComponents();
-        for(Lot lot : Database.getLots()){
+        for(Lot lot : Database.getDatabase().getListOfLots()){
             DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
             model.addRow(new Object[]{lot.getBlock(), lot.getLot(), lot.getPrice(), lot.getSize(), lot.getStatus()});
         }

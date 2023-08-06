@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import libs.users.*;
+import src.CustomerDashboard;
 import src.LogIn;
 import src.RealtorDashboard;
+import src.SearchGUI;
 
 /**
  *
@@ -35,8 +37,11 @@ public class Transaction{
         if(isRealtor){
             if(username.equals(Realtor.getUsername()) && Arrays.equals(Realtor.getPass(), password)) {
                 this.user = new Realtor();
-                JOptionPane.showMessageDialog(new LogIn(true), "Welcome Realtor " + this.user.getName());
+                JOptionPane.showMessageDialog(new LogIn(true), "Welcome Realtor " + Realtor.getUsername());
                 new RealtorDashboard().setVisible(true);
+                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Realtor Details");
                 return;
             }
         }
@@ -57,7 +62,6 @@ public class Transaction{
             }
             // user password transaction is found within customer database
             if(!Arrays.equals(customerDB.getPassword(), password)){
-                
                 return;
             }
             
@@ -65,6 +69,10 @@ public class Transaction{
             this.userValidated = true;
             this.user = customerDB;
             JOptionPane.showMessageDialog(new LogIn(false), "welcome " + this.user.getName());
+            new CustomerDashboard(customerDB).setVisible(true);
+            for(Lot lot : customerDB.getOwnedLots()) {
+                System.out.println("name: " + customerDB.getName() + ": block" + lot.getBlock() + " lot" + lot.getLot());
+            }
             return;
         });
        
@@ -73,6 +81,7 @@ public class Transaction{
             this.user = new Customer(username, password);
             this.user.update();
             JOptionPane.showMessageDialog(new LogIn(false), "Registered user: " + this.user.getName());
+            new SearchGUI().setVisible(true);
         }
     }
     

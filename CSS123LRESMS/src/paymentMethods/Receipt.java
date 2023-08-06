@@ -30,7 +30,7 @@ public class Receipt {
             receipt += "\n";
             receipt += item + ": " + this.receiptDetails.get(item);
         }
-        receipt += "\n\nGenerated " + date.toString();
+        receipt += "\nGenerated " + date.toString();
         return receipt;
     }
 }

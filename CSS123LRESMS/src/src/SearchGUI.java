@@ -6,7 +6,6 @@ package src;
 
 import java.util.ArrayList;
 import libs.Database;
-import libs.LotFactory;
 import libs.Lot;
 import libs.search.*;
 /**
@@ -14,7 +13,7 @@ import libs.search.*;
  * @author Riniel
  */
 public class SearchGUI extends javax.swing.JFrame {
-    public static ArrayList<Lot> searchResults = new ArrayList<Lot>();
+//    public static ArrayList<Lot> searchResults = new ArrayList<Lot>();
     /**
      * Creates new form GUI
      */
@@ -171,16 +170,15 @@ public class SearchGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        LotFactory factory = new LotFactory(10, 10);
-        factory.CreateLots();
         Search searcher = new Filter();
+        ArrayList<Lot> DBcopy = new ArrayList<>(Database.getDatabase().getListOfLots());
         char block = (blockBox.getSelectedItem().toString().equals("No Preference")) 
                 ? ' ' : blockBox.getSelectedItem().toString().charAt(0);
         
         
         
         ArrayList<Lot> unsorted = searcher.filterData(
-                Database.getLots(), 
+                DBcopy, 
                 block,
                 priceMin.getText().toString(),
                 priceMax.getText().toString(),
@@ -195,12 +193,7 @@ public class SearchGUI extends javax.swing.JFrame {
             System.out.println("notified as price priority");
             unsorted = new PricePriority(searcher).sort(unsorted);
         }
-        this.searchResults = unsorted;
-        for(Lot lot : this.searchResults) {
-            System.out.println("block: " + lot.getBlock() + " lot: " + lot.getLot() + " price: " + lot.getPrice() + " size: " + lot.getSize());
-        }
-        
-        new SearchResults().setVisible(true);
+        new SearchResults(this, unsorted).setVisible(true);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
