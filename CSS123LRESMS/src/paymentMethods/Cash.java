@@ -19,10 +19,11 @@ public class Cash implements Payment{
     
     @Override
     public String processPayment(double amount) {
-        int confirmation = JOptionPane.showConfirmDialog(gui, "Pay Php " + SearchResults.result.getPrice() + " to office to complete the purchase. The lot is currently reserved.");
+        int confirmation = JOptionPane.showConfirmDialog(gui, "Pay Php " + SearchResults.result.getPrice() + " to office to complete the purchase. The lot will not be owned but reserved.");
         Receipt receipt = new Receipt();
         if(confirmation == 0) {
             SearchResults.result.setStatus("Reserved");
+            SearchResults.result.setOwner(Transaction.getTransaction().getUser());
         }
         
         receipt.setPaymentMethod("Gcash");
@@ -31,6 +32,7 @@ public class Cash implements Payment{
         receipt.addReceiptDetails("Email", this.email);
         receipt.addReceiptDetails("Block", String.valueOf(SearchResults.result.getBlock()));
         receipt.addReceiptDetails("Lot", ((Integer)SearchResults.result.getLot()).toString());
+        Transaction.getTransaction().getUser().updateOwnedLots(SearchResults.result);
         return receipt.generateReceipt();
     }
     

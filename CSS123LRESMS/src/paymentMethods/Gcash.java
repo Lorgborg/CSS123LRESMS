@@ -63,7 +63,6 @@ public class Gcash implements Payment{
         receipt.addReceiptDetails("Block", String.valueOf(SearchResults.result.getBlock()));
         receipt.addReceiptDetails("Lot", ((Integer)SearchResults.result.getLot()).toString());
         receipt.addReceiptDetails("Username", Transaction.getTransaction().getUser().getName());
-        Transaction.getTransaction().getUser().updateOwnedLots(SearchResults.result);
         return receipt.generateReceipt();
     }
 }

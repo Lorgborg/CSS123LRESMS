@@ -16,6 +16,7 @@ import src.SearchGUI;
 public class Filter implements Search {
     public ArrayList<Lot> filterData(ArrayList<Lot> unsorted, char block, String minPrice, String maxPrice, String minSize, String maxSize, String lot){
         String[] stringConstraints = {minPrice, maxPrice, minSize, maxSize};
+        unsorted.removeIf(filter -> !filter.getStatus().equals("Unoccupied"));
         if(block != ' ') {
             unsorted.removeIf(filter -> filter.getBlock() != block);
         }
@@ -23,7 +24,7 @@ public class Filter implements Search {
         if(!lot.isEmpty()) {
             int lotInt = Integer.parseInt(lot);
             unsorted.removeIf(filter -> filter.getLot() != lotInt);
-            unsorted.removeIf(filter -> filter.getStatus().equals("Occupied"));
+            unsorted.removeIf(filter -> filter.getStatus().equals("Owned"));
             return unsorted;
         }
         
@@ -67,8 +68,6 @@ public class Filter implements Search {
             System.out.println("filtered max price");
             unsorted.removeIf(filter -> filter.getPrice() > intConstraints[1]);
         }
-        
-        unsorted.removeIf(filter -> !filter.getStatus().equals("Unoccupied"));
         
         return unsorted;
     }

@@ -44,6 +44,10 @@ public class Lot {
     public int getLot() {
         return lot;
     }
+
+    public User getOwner() {
+        return owner;
+    }
     
     public void setOwner(User ownerInput){
         this.owner = ownerInput;

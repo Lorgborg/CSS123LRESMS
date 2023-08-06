@@ -20,8 +20,14 @@ public class LotsGUI extends javax.swing.JFrame {
     public LotsGUI() {
         initComponents();
         for(Lot lot : Database.getDatabase().getListOfLots()){
+            String ownerName;
             DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
-            model.addRow(new Object[]{lot.getBlock(), lot.getLot(), lot.getPrice(), lot.getSize(), lot.getStatus()});
+            if (lot.getOwner() == null) {
+                ownerName = "No Owner";
+            } else {
+                ownerName = lot.getOwner().getName();
+            }
+            model.addRow(new Object[]{lot.getBlock(), lot.getLot(), lot.getPrice(), lot.getSize(), lot.getStatus(), ownerName});
         }
     }
 
@@ -45,14 +51,14 @@ public class LotsGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Block #", "Lot #", "Price", "Size", "Status"
+                "Block #", "Lot #", "Price", "Size", "Status", "Owner"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
