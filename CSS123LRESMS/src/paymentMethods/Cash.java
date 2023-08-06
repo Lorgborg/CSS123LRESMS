@@ -26,11 +26,11 @@ public class Cash implements Payment{
         }
         
         receipt.setPaymentMethod("Gcash");
-        receipt.addReceiptDetails("Name", this.name);
+        receipt.addReceiptDetails("Name", Transaction.getTransaction().getUser().getName());
         receipt.addReceiptDetails("Phone number", this.phoneNum);
+        receipt.addReceiptDetails("Email", this.email);
         receipt.addReceiptDetails("Block", String.valueOf(SearchResults.result.getBlock()));
         receipt.addReceiptDetails("Lot", ((Integer)SearchResults.result.getLot()).toString());
-        receipt.addReceiptDetails("Username", Transaction.getTransaction().getUser().getName());
         return receipt.generateReceipt();
     }
     
