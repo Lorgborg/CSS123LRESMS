@@ -14,7 +14,7 @@ import src.SearchResults;
  * @author Riniel
  */
 public class BankTransfer implements Payment{
-    private PayGUI gui = new PayGUI();
+//    private PayGUI gui = new PayGUI();
     private String creditCardNum, validThru, memSince;
     private char[] cv;
     

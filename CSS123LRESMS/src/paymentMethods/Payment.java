@@ -9,6 +9,7 @@ package paymentMethods;
  * @author Riniel
  */
 public interface Payment {
+    PayGUI gui = new PayGUI();
     String processPayment(double price);
     void getPaymentDetails();
     void setPaymentDetails();

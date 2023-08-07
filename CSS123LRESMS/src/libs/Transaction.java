@@ -85,10 +85,6 @@ public class Transaction{
         }
     }
     
-    public void searchLots(){
-        this.user.searchLots();
-    }
-    
     public User getUser(){
         return this.user;
     }

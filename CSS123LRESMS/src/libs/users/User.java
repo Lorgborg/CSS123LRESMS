@@ -24,9 +24,6 @@ public abstract class User {
     }
     
     public abstract void update();
-    public void searchLots(){
-        
-    }
     public void updateOwnedLots(Lot lot){
         
     }

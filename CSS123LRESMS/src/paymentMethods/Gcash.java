@@ -15,7 +15,7 @@ import src.SearchResults;
  * @author Riniel
  */
 public class Gcash implements Payment{
-    private PayGUI gui = new PayGUI();
+//    private PayGUI gui = new PayGUI();
     private String phoneNum;
     private char[] password;
     

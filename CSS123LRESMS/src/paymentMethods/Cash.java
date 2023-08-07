@@ -14,8 +14,8 @@ import src.SearchResults;
  * @author Riniel
  */
 public class Cash implements Payment{
-    private PayGUI gui = new PayGUI();
-    String name, phoneNum, email, address;
+//    private PayGUI gui = new PayGUI();
+    String phoneNum, email, address;
     
     @Override
     public String processPayment(double amount) {
